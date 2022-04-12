@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="testformgenerator.project_group_11.CreateQuestionController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="invalidQuestionLabel" layoutX="286.0" layoutY="64.0" />
+            <TextField fx:id="questField" layoutX="226.0" layoutY="101.0" promptText="Question" />
+            <TextField fx:id="ansAField" layoutX="226.0" layoutY="134.0" promptText="Answer A" />
+            <TextField fx:id="ansBField" layoutX="226.0" layoutY="165.0" promptText="Answer B" />
+            <TextField fx:id="ansCField" layoutX="226.0" layoutY="200.0" promptText="Answer C" />
+            <TextField fx:id="ansDField" layoutX="226.0" layoutY="235.0" promptText="Answer D" />
+            <Button fx:id="submitButton" layoutX="249.0" layoutY="277.0" mnemonicParsing="false" onAction="#tryCreateQuestion" text="Create Question" />
+            <Label fx:id="bankStatus" layoutX="287.0" layoutY="41.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
