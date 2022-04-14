@@ -23,7 +23,7 @@ public class createQuestion {
     public static boolean correctAnswerInputLengths(String[] answerChoices) {
 
         for (int i = 0; i < answerChoices.length; i++) {
-            if (!(answerChoices[i].length() > INPUT_MIN_LENGTH && answerChoices[i].length() < INPUT_MAX_LENGTH)) {
+            if (!(answerChoices[i].length() >= INPUT_MIN_LENGTH && answerChoices[i].length() <= INPUT_MAX_LENGTH)) {
                 return false;
             }
         }
@@ -62,7 +62,7 @@ public class createQuestion {
             return "Invalid Answer Choice Amount";
         }
         else if (!correctAnswerSelected(answerChoices, correctAnswer)) {
-            return "Invalid Correct Answer";
+            return "Invalid Correct Answer Selection";
         }
 
         return "Created Question Sucessfully";
