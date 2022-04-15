@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testformgenerator.project_group_11.QuestionBankController">
+   <children>
+      <Label layoutX="242.0" layoutY="118.0" text="Question Bank Name" />
+      <TextField fx:id="bankName" layoutX="220.0" layoutY="142.0" promptText="Question Bank Name" />
+      <Button fx:id="submitButton" layoutX="272.0" layoutY="238.0" mnemonicParsing="false" onAction="#tryCreateQuestionBank" text="Submit" />
+      <Label fx:id="invalidQuestionBankLabel" layoutX="242.0" layoutY="175.0" textFill="#f80000" />
+      <Button fx:id="homeButton" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" text="Home" />
+   </children>
+</AnchorPane>
