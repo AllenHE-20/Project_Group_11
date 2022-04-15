@@ -16,6 +16,14 @@
             <Button fx:id="submitButton" layoutX="249.0" layoutY="326.0" mnemonicParsing="false" onAction="#tryCreateQuestion" text="Create Question" />
             <Label fx:id="bankStatus" layoutX="287.0" layoutY="41.0" />
             <Button fx:id="homeButton" layoutY="2.0" mnemonicParsing="false" text="Home" />
+            <RadioButton fx:id="aCorrect" layoutX="383.0" layoutY="138.0" mnemonicParsing="false" text="A is correct">
+               <toggleGroup>
+                  <ToggleGroup fx:id="answerGroup" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="dCorrect" layoutX="383.0" layoutY="239.0" mnemonicParsing="false" text="D is correct" toggleGroup="$answerGroup" />
+            <RadioButton fx:id="bCorrect" layoutX="383.0" layoutY="169.0" mnemonicParsing="false" text="B is correct" toggleGroup="$answerGroup" />
+            <RadioButton fx:id="cCorrect" layoutX="383.0" layoutY="204.0" mnemonicParsing="false" text="C is correct" toggleGroup="$answerGroup" />
          </children>
       </AnchorPane>
    </center>
