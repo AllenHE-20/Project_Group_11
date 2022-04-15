@@ -44,11 +44,13 @@ public class QuestionBank {
         return true;
     }
 
-    public static String createQuestionBankAction(String name) { //Maybe this should also receive the DBMgr so that it can add the bank to it.
+    public static String createQuestionBankAction(String name, DBMgr targetDatabase) { //Maybe this should also receive the DBMgr so that it can add the bank to it.
 
         if (!nameCorrectLength(name)) {
-            return "Invalid Name";
+            return "Invalid Name"; //This multiple return style is bad practice
         }
+
+        targetDatabase.addBank(new QuestionBank(name));
         return "Created Question Bank Successfully";
     }
 }

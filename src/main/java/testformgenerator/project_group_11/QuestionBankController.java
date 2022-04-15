@@ -27,9 +27,9 @@ public class QuestionBankController {
 
     private void submitQuestionBank(){ //Check if this needs to throw an exception
         String answer = bankName.getText();
+        DBMgr dummy = new DBMgr(); //In final release, this should pull down the singleton DBMgr instance
 
-
-        String result = QuestionBank.createQuestionBankAction(answer);
+        String result = QuestionBank.createQuestionBankAction(answer, dummy);
 
         if (result.equals("Created Question Bank Successfully")){
             //Add to question bank, change scene
