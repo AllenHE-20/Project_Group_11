@@ -44,7 +44,7 @@ public class QuestionBank {
         return true;
     }
 
-    public static String createQuestionBankAction(String name) {
+    public static String createQuestionBankAction(String name) { //Maybe this should also receive the DBMgr so that it can add the bank to it.
 
         if (!nameCorrectLength(name)) {
             return "Invalid Name";
