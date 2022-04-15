@@ -7,23 +7,23 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="invalidQuestionLabel" layoutX="286.0" layoutY="64.0" textAlignment="CENTER" />
-            <TextField fx:id="questField" layoutX="226.0" layoutY="101.0" promptText="Question" />
-            <TextField fx:id="ansAField" layoutX="226.0" layoutY="134.0" promptText="Answer A" />
-            <TextField fx:id="ansBField" layoutX="226.0" layoutY="165.0" promptText="Answer B" />
-            <TextField fx:id="ansCField" layoutX="226.0" layoutY="200.0" promptText="Answer C" />
-            <TextField fx:id="ansDField" layoutX="226.0" layoutY="235.0" promptText="Answer D" />
-            <Button fx:id="submitButton" layoutX="249.0" layoutY="326.0" mnemonicParsing="false" onAction="#tryCreateQuestion" text="Create Question" />
+            <Label fx:id="invalidQuestionLabel" layoutX="123.0" layoutY="49.0" prefHeight="23.0" prefWidth="280.0" textAlignment="CENTER" />
+            <TextField fx:id="questField" layoutX="94.0" layoutY="73.0" prefHeight="25.0" prefWidth="382.0" promptText="Question" />
+            <TextField fx:id="ansAField" layoutX="94.0" layoutY="117.0" promptText="Answer A" />
+            <TextField fx:id="ansBField" layoutX="329.0" layoutY="117.0" promptText="Answer B" />
+            <TextField fx:id="ansCField" layoutX="94.0" layoutY="192.0" promptText="Answer C" />
+            <TextField fx:id="ansDField" layoutX="328.0" layoutY="192.0" promptText="Answer D" />
+            <Button fx:id="submitButton" layoutX="234.0" layoutY="264.0" mnemonicParsing="false" onAction="#tryCreateQuestion" text="Create Question" />
             <Label fx:id="bankStatus" layoutX="287.0" layoutY="41.0" />
             <Button fx:id="homeButton" layoutY="2.0" mnemonicParsing="false" text="Home" />
-            <RadioButton fx:id="aCorrect" layoutX="383.0" layoutY="138.0" mnemonicParsing="false" text="A is correct">
+            <RadioButton fx:id="aCorrect" layoutX="94.0" layoutY="152.0" mnemonicParsing="false" text="A is correct">
                <toggleGroup>
                   <ToggleGroup fx:id="answerGroup" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="dCorrect" layoutX="383.0" layoutY="239.0" mnemonicParsing="false" text="D is correct" toggleGroup="$answerGroup" />
-            <RadioButton fx:id="bCorrect" layoutX="383.0" layoutY="169.0" mnemonicParsing="false" text="B is correct" toggleGroup="$answerGroup" />
-            <RadioButton fx:id="cCorrect" layoutX="383.0" layoutY="204.0" mnemonicParsing="false" text="C is correct" toggleGroup="$answerGroup" />
+            <RadioButton fx:id="dCorrect" layoutX="328.0" layoutY="226.0" mnemonicParsing="false" text="D is correct" toggleGroup="$answerGroup" />
+            <RadioButton fx:id="bCorrect" layoutX="328.0" layoutY="144.0" mnemonicParsing="false" text="B is correct" toggleGroup="$answerGroup" />
+            <RadioButton fx:id="cCorrect" layoutX="95.0" layoutY="226.0" mnemonicParsing="false" text="C is correct" toggleGroup="$answerGroup" />
          </children>
       </AnchorPane>
    </center>
