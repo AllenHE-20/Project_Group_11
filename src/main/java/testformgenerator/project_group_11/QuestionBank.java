@@ -3,6 +3,8 @@ package testformgenerator.project_group_11;
 import java.util.Vector;
 
 public class QuestionBank {
+    public static final int INPUT_MAX_LENGTH = 50;
+    public static final int INPUT_MIN_LENGTH = 1;
     private Vector<Question> questionStore; //Use vector to allow easy storage expansion
     private String name;
     private int questionCount=0;
@@ -33,5 +35,20 @@ public class QuestionBank {
 
     public int getQuestionCount() { //Return question count for validation purposes.
         return questionCount;
+    }
+
+    //check if name length is valid
+    public static boolean nameCorrectLength(String name){
+        if (name.length() < INPUT_MIN_LENGTH || name.length() > INPUT_MAX_LENGTH)
+            return false;
+        return true;
+    }
+
+    public static String createQuestionBankAction(String name) {
+
+        if (!nameCorrectLength(name)) {
+            return "Invalid Name";
+        }
+        return "Created Question Bank Successfully";
     }
 }
