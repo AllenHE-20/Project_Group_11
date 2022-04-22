@@ -17,6 +17,12 @@ public class createTestUIController {
     private ComboBox<String> availableBanks;
 
     @FXML
+    private Label bankDetails;
+
+    @FXML
+    private Spinner<Integer> questionCount;
+
+    @FXML
     private RadioButton randomizeOrder;
 
     @FXML
@@ -41,14 +47,26 @@ public class createTestUIController {
     public void setQuestionCount() {
         String bank = availableBanks.getValue();
 
+        System.out.println(bank);
+
         // filler database until persistence is achieved
         DBMgr database = new DBMgr();
         QuestionBank qb = new QuestionBank("Bank 1");
         Question q = new Question("What is today's date?", "July 24th, 2022", "August 16th, 2022", "January 24th, 2022", "April 21st, 2022");
+        Question q1 = new Question("What is today's date?", "July 24th, 2022", "August 16th, 2022", "January 24th, 2022", "April 21st, 2022");
         qb.addNewQuestion(q);
+        qb.addNewQuestion(q1);
+
         database.addBank(qb);
 
         QuestionBank currentBank = database.getQuestionBank(bank);
+
+        System.out.println(currentBank);
+
+        bankDetails.setText(bank + ", Available Questions: " + currentBank.getQuestionCount());
+
+        questionCount.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, currentBank.getQuestionCount(), currentBank.getQuestionCount()));
+
 
 
     }

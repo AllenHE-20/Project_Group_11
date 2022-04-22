@@ -13,10 +13,18 @@
     <children>
         <Label layoutX="220.0" layoutY="118.0" text="Create Test" />
         <ComboBox fx:id="availableBanks" layoutX="220.0" layoutY="142.0" onAction="#setQuestionCount"/>
-        <RadioButton fx:id="randomizeOrder" layoutX="220.0" layoutY="190.0" text="Randomize Test Order"/>
-        <Label layoutX="220.0" layoutY="220.0" text="Variations of Test"/>
-        <Spinner fx:id="testCount" layoutX="220.0" layoutY="250.0" max="500"/>
-        <Button fx:id="submitButton" layoutX="220.0" layoutY="300.0" mnemonicParsing="false" text="Generate Tests" onAction="#createTests"/>
+        <Label fx:id="bankDetails" layoutX="220.0" layoutY="170.0"/>
+
+        <Label layoutX="220.0" layoutY="190.0" text="Number of Questions"/>
+        <Spinner fx:id="questionCount" layoutX="220.0" layoutY="210.0" max="500" editable="true"/>
+
+        <RadioButton fx:id="randomizeOrder" layoutX="220.0" layoutY="245.0" text="Randomize Test Order"/>
+
+        <Label layoutX="220.0" layoutY="270.0" text="Variations of Test"/>
+        <Spinner fx:id="testCount" layoutX="220.0" layoutY="290.0" max="500"/>
+
+        <Button fx:id="submitButton" layoutX="220.0" layoutY="330.0" mnemonicParsing="false" text="Generate Tests" onAction="#createTests"/>
+
         <Button fx:id="homeButton" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" text="Home" onAction="#initializeBanks"/>
     </children>
 </AnchorPane>
