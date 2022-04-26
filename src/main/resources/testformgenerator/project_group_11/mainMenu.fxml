@@ -6,6 +6,12 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testformgenerator.project_group_11.MainMenuController">
    <children>
-      <Button fx:id="createBank" layoutX="84.0" layoutY="72.0" mnemonicParsing="false" onAction="#changeToBank" text="Create Question Bank" />
+      <Button fx:id="createBank" layoutX="84.0" layoutY="72.0" mnemonicParsing="false" onAction="#changeScene" text="Create Question Bank" />
+      <Button fx:id="createQuestion" layoutX="99.0" layoutY="108.0" mnemonicParsing="false" onAction="#changeScene" text="Create Question" />
+      <Button fx:id="deleteBank" layoutX="85.0" layoutY="144.0" mnemonicParsing="false" text="Delete Question Bank" />
+      <Button fx:id="deleteQuestion" layoutX="99.0" layoutY="175.0" mnemonicParsing="false" text="Delete Question" />
+      <Button fx:id="createTest" layoutX="240.0" layoutY="72.0" mnemonicParsing="false" onAction="#changeScene" text="Create Test" />
+      <Button fx:id="viewTests" layoutX="242.0" layoutY="108.0" mnemonicParsing="false" text="View Tests" />
+      <Button fx:id="deleteTest" layoutX="240.0" layoutY="144.0" mnemonicParsing="false" text="Delete Test" />
    </children>
 </AnchorPane>
