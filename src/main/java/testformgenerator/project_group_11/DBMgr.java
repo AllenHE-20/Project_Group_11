@@ -7,10 +7,24 @@ public class DBMgr {
     private Vector<Test> tests;
     private int sets=0; //Track the number of each present
     private int testCount=0;
+    private int questionbankIterator = 0;
 
     public DBMgr() { //Instantiate storage on object creation
         questionSets = new Vector<QuestionBank>();
         tests = new Vector<Test>();
+    }
+
+    public String getNextQuestionbankName(){
+        if(questionbankIterator < sets){
+            String temp = questionSets.get(questionbankIterator).getName();
+            questionbankIterator++;
+            return temp;
+        }
+        return "";
+    }
+
+    public void resetQuestionbankIterator(){
+        questionbankIterator = 0;
     }
 
     public boolean addBank(QuestionBank newBank) {
