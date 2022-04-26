@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.net.Inet4Address;
+import java.util.Objects;
 
 public class createTestUIController {
 
@@ -27,6 +28,22 @@ public class createTestUIController {
 
     @FXML
     private Spinner<Integer> testCount;
+
+
+    @FXML
+    public void initialize(){
+        DBMgrHolder holder = DBMgrHolder.getInstance();
+        DBMgr database = holder.getDatabase();
+
+        String temp= database.getNextQuestionbankName();
+        while(!Objects.equals(temp, "")){
+            availableBanks.getItems().add(temp);
+            temp = database.getNextQuestionbankName();
+        }
+
+
+        availableBanks.getSelectionModel().selectFirst();
+    }
 
     // find way to initialize this on scene open
     public void initializeBanks() {
