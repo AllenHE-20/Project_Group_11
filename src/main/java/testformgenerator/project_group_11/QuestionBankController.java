@@ -35,12 +35,14 @@ public class QuestionBankController {
 
     private void submitQuestionBank(){ //Check if this needs to throw an exception
         String answer = bankName.getText();
-        DBMgr dummy = new DBMgr(); //In final release, this should pull down the singleton DBMgr instance
+        DBMgrHolder holder = DBMgrHolder.getInstance();
+        DBMgr database = holder.getDatabase();
 
-        String result = QuestionBank.createQuestionBankAction(answer, dummy);
+        String result = QuestionBank.createQuestionBankAction(answer, database);
 
         if (result.equals("Created Question Bank Successfully")){
-            //Add to question bank, change scene
+            //Change scene to splash page
+            changeSceneHandler("mainMenu.fxml");
         }else{
             //Set invalidQuestionBankLabel message to result
             invalidQuestionBankLabel.setText(result);
