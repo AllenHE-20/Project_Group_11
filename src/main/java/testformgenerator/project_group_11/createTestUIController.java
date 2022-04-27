@@ -35,6 +35,7 @@ public class createTestUIController {
         DBMgrHolder holder = DBMgrHolder.getInstance();
         DBMgr database = holder.getDatabase();
 
+        database.resetQuestionbankIterator();
         String temp= database.getNextQuestionbankName();
         while(!Objects.equals(temp, "")){
             availableBanks.getItems().add(temp);
