@@ -1,8 +1,14 @@
 package testformgenerator.project_group_11;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.Inet4Address;
 import java.util.Objects;
 
@@ -100,6 +106,28 @@ public class createTestUIController {
         QuestionBank bank = database.getQuestionBank(availableBanks.getValue());
 
         System.out.println(randomize);
+    }
+
+
+    public void triggerSceneChange(ActionEvent actionEvent){
+        if(actionEvent.getSource() == homeButton){
+            changeSceneHandler("mainMenu.fxml");
+        }
+    }
+
+
+    private void changeSceneHandler(String target){
+        Stage stage;
+        Parent root;
+        try {
+            stage = (Stage) homeButton.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource(target));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch(IOException e){
+            System.err.println("An error " + e.getMessage() + " occurred when switching to the create question scene.");
+        }
     }
 
 

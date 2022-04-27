@@ -1,30 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="testformgenerator.project_group_11.createTestUIController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testformgenerator.project_group_11.createTestUIController">
     <children>
         <Label layoutX="220.0" layoutY="118.0" text="Create Test" />
-        <ComboBox fx:id="availableBanks" layoutX="220.0" layoutY="142.0" onAction="#setQuestionCount"/>
-        <Label fx:id="bankDetails" layoutX="220.0" layoutY="170.0"/>
+        <ComboBox fx:id="availableBanks" layoutX="220.0" layoutY="142.0" onAction="#setQuestionCount" />
+        <Label fx:id="bankDetails" layoutX="220.0" layoutY="170.0" />
 
-        <Label layoutX="220.0" layoutY="190.0" text="Number of Questions"/>
-        <Spinner fx:id="questionCount" layoutX="220.0" layoutY="210.0" max="500" editable="true"/>
+        <Label layoutX="220.0" layoutY="190.0" text="Number of Questions" />
+        <Spinner fx:id="questionCount" editable="true" layoutX="220.0" layoutY="210.0" max="500" />
 
-        <RadioButton fx:id="randomizeOrder" layoutX="220.0" layoutY="245.0" text="Randomize Test Order"/>
+        <RadioButton fx:id="randomizeOrder" layoutX="220.0" layoutY="245.0" text="Randomize Test Order" />
 
-        <Label layoutX="220.0" layoutY="270.0" text="Variations of Test"/>
-        <Spinner fx:id="testCount" layoutX="220.0" layoutY="290.0" max="500"/>
+        <Label layoutX="220.0" layoutY="270.0" text="Variations of Test" />
+        <Spinner fx:id="testCount" layoutX="220.0" layoutY="290.0" max="500" />
 
-        <Button fx:id="submitButton" layoutX="220.0" layoutY="330.0" mnemonicParsing="false" text="Generate Tests" onAction="#createTests"/>
+        <Button fx:id="submitButton" layoutX="220.0" layoutY="330.0" mnemonicParsing="false" onAction="#createTests" text="Generate Tests" />
 
-        <Button fx:id="homeButton" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" text="Home" onAction="#initializeBanks"/>
+        <Button fx:id="homeButton" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" onAction="#triggerSceneChange" text="Home" />
     </children>
 </AnchorPane>
