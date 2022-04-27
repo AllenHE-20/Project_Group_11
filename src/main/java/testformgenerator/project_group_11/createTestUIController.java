@@ -35,6 +35,9 @@ public class createTestUIController {
     @FXML
     private Spinner<Integer> testCount;
 
+    @FXML
+    private TextField testName;
+
 
     @FXML
     public void initialize(){
@@ -73,15 +76,8 @@ public class createTestUIController {
 
         System.out.println(bank);
 
-        // filler database until persistence is achieved
-        DBMgr database = new DBMgr();
-        QuestionBank qb = new QuestionBank("Bank 1");
-        Question q = new Question("What is today's date?", "July 24th, 2022", "August 16th, 2022", "January 24th, 2022", "April 21st, 2022");
-        Question q1 = new Question("What is today's date?", "July 24th, 2022", "August 16th, 2022", "January 24th, 2022", "April 21st, 2022");
-        qb.addNewQuestion(q);
-        qb.addNewQuestion(q1);
-
-        database.addBank(qb);
+        DBMgrHolder holder = DBMgrHolder.getInstance();
+        DBMgr database = holder.getDatabase();
 
         QuestionBank currentBank = database.getQuestionBank(bank);
 
@@ -89,7 +85,7 @@ public class createTestUIController {
 
         bankDetails.setText(bank + ", Available Questions: " + currentBank.getQuestionCount());
 
-        questionCount.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, currentBank.getQuestionCount(), currentBank.getQuestionCount()));
+        questionCount.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, currentBank.getQuestionCount(), currentBank.getQuestionCount()));
 
 
 
@@ -97,15 +93,20 @@ public class createTestUIController {
 
     public void createTests() {
 
-        // filler database until persistence is achieved
-        DBMgr database = new DBMgr();
-        QuestionBank qb = new QuestionBank("Bank 1");
-        database.addBank(qb);
+        DBMgrHolder holder = DBMgrHolder.getInstance();
+        DBMgr database = holder.getDatabase();
 
+
+
+        TestCreationController creationController = new TestCreationController();
         Boolean randomize = randomizeOrder.isSelected();
         QuestionBank bank = database.getQuestionBank(availableBanks.getValue());
+        System.out.println((availableBanks.getValue()));
 
-        System.out.println(randomize);
+        Boolean temp = creationController.createNewTest(availableBanks.getValue(), testName.getText(), testCount.getValue(), questionCount.getValue(), database);
+
+
+        System.out.println(temp);
     }
 
 
