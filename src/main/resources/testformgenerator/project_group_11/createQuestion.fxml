@@ -24,6 +24,7 @@
             <RadioButton fx:id="dCorrect" layoutX="328.0" layoutY="226.0" mnemonicParsing="false" text="D is correct" toggleGroup="$answerGroup" />
             <RadioButton fx:id="bCorrect" layoutX="328.0" layoutY="144.0" mnemonicParsing="false" text="B is correct" toggleGroup="$answerGroup" />
             <RadioButton fx:id="cCorrect" layoutX="95.0" layoutY="226.0" mnemonicParsing="false" text="C is correct" toggleGroup="$answerGroup" />
+            <ComboBox fx:id="availableBanks" layoutX="225.0" layoutY="46.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
    </center>

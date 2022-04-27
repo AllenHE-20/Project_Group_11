@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 public class CreateQuestionController {
 
@@ -47,6 +48,9 @@ public class CreateQuestionController {
     @FXML
     private ToggleGroup answerGroup;
 
+    @FXML
+    private ComboBox<String> availableBanks;
+
     public CreateQuestionController(){
         //Empty constructor
 
@@ -54,6 +58,21 @@ public class CreateQuestionController {
     }
 
 
+    @FXML
+    public  void initialize(){
+        DBMgrHolder holder = DBMgrHolder.getInstance();
+        DBMgr database = holder.getDatabase();
+
+        database.resetQuestionbankIterator();
+        String temp = database.getNextQuestionbankName();
+        while(!Objects.equals(temp, "")){
+            availableBanks.getItems().add(temp);
+            temp = database.getNextQuestionbankName();
+        }
+
+
+        availableBanks.getSelectionModel().selectFirst();
+    }
 
 
 
@@ -84,7 +103,14 @@ public class CreateQuestionController {
 
         if (result.equals("Created Question Sucessfully")){
             //Add to question bank, change scene
-            invalidQuestionLabel.setText(result); //In final version, this section will retrieve DBMgr singleton, get the question bank, and add the question
+            DBMgrHolder holder = DBMgrHolder.getInstance();
+            DBMgr database = holder.getDatabase();
+            QuestionBank temp = database.getQuestionBank(availableBanks.getValue());
+            //TODO: Does this need to check for a null bank? Should it get te bank outside the if statement?
+            Question questHold = new Question(questField.getText(), answers[0], answers[1], answers[2], answers[3]);
+            temp.addNewQuestion(questHold);
+
+            invalidQuestionLabel.setText(result); //TODO: In final version, this section will retrieve DBMgr singleton, get the question bank, and add the question
         }else{
             //Set invalidQuestionLabel message to result
             invalidQuestionLabel.setText(result);
