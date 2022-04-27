@@ -45,7 +45,7 @@ public class createTestUIController {
         DBMgr database = holder.getDatabase();
 
         database.resetQuestionbankIterator();
-        String temp= database.getNextQuestionbankName();
+        String temp = database.getNextQuestionbankName();
         while(!Objects.equals(temp, "")){
             availableBanks.getItems().add(temp);
             temp = database.getNextQuestionbankName();
@@ -53,23 +53,11 @@ public class createTestUIController {
 
 
         availableBanks.getSelectionModel().selectFirst();
+        //TODO: Make this check if the box was actually populated before updating values
+        setQuestionCount(); //Set question count on initial setup
     }
 
-    // find way to initialize this on scene open
-    public void initializeBanks() {
 
-        // filler database until persistence is achieved
-        DBMgr database = new DBMgr();
-        QuestionBank qb = new QuestionBank("Bank 1");
-        Question q = new Question("What is today's date?", "July 24th, 2022", "August 16th, 2022", "January 24th, 2022", "April 21st, 2022");
-        qb.addNewQuestion(q);
-        database.addBank(qb);
-
-
-        availableBanks.getItems().add(qb.getName());
-        availableBanks.getSelectionModel().selectFirst();
-
-    }
 
     public void setQuestionCount() {
         String bank = availableBanks.getValue();
