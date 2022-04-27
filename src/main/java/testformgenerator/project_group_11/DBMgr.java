@@ -8,10 +8,19 @@ public class DBMgr {
     private int sets=0; //Track the number of each present
     private int testCount=0;
     private int questionbankIterator = 0;
+    private String persistentMessage;
 
     public DBMgr() { //Instantiate storage on object creation
         questionSets = new Vector<QuestionBank>();
         tests = new Vector<Test>();
+    }
+
+    public void setPersistentMessage(String newMessage){
+        persistentMessage = newMessage;
+    }
+
+    public String getPersistentMessage(){
+        return persistentMessage;
     }
 
     public String getNextQuestionbankName(){
