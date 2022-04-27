@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="testformgenerator.project_group_11.ConfirmationScreenController"
-            prefHeight="400.0" prefWidth="600.0" >
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testformgenerator.project_group_11.ConfirmationScreenController">
+   <children>
+      <Button fx:id="okButton" layoutX="274.0" layoutY="313.0" mnemonicParsing="false" onAction="#goToMenu" text="Ok" />
+      <Label fx:id="messageLabel" layoutX="292.0" layoutY="192.0" />
+   </children>
 </AnchorPane>
