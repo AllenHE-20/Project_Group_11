@@ -15,7 +15,7 @@
             <TextField fx:id="ansDField" layoutX="328.0" layoutY="192.0" promptText="Answer D" />
             <Button fx:id="submitButton" layoutX="234.0" layoutY="264.0" mnemonicParsing="false" onAction="#tryCreateQuestion" text="Create Question" />
             <Label fx:id="bankStatus" layoutX="287.0" layoutY="41.0" />
-            <Button fx:id="homeButton" layoutY="2.0" mnemonicParsing="false" text="Home" />
+            <Button fx:id="homeButton" layoutY="2.0" mnemonicParsing="false" onAction="#triggerSceneChange" text="Home" />
             <RadioButton fx:id="aCorrect" layoutX="94.0" layoutY="152.0" mnemonicParsing="false" text="A is correct">
                <toggleGroup>
                   <ToggleGroup fx:id="answerGroup" />
