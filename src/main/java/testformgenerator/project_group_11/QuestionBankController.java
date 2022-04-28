@@ -42,7 +42,8 @@ public class QuestionBankController {
 
         if (result.equals("Created Question Bank Successfully")){
             //Change scene to splash page
-            changeSceneHandler("mainMenu.fxml");
+            database.setPersistentMessage("Created question bank " + answer + " successfully.");
+            changeSceneHandler("confirmationScreen.fxml");
         }else{
             //Set invalidQuestionBankLabel message to result
             invalidQuestionBankLabel.setText(result);
