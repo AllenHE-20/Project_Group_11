@@ -1,3 +1,5 @@
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import testformgenerator.project_group_11.DBMgr;
 import testformgenerator.project_group_11.QuestionBank;
@@ -5,7 +7,17 @@ import testformgenerator.project_group_11.QuestionBank;
 import static org.junit.jupiter.api.Assertions.*;
 
 class QuestionBankTest {
-    DBMgr testDB = new DBMgr();
+    static DBMgr testDB = null;
+
+    @BeforeEach
+    void setUp() throws Exception{
+        testDB = new DBMgr();
+    }
+
+    @AfterEach
+    void tearDown() throws Exception{
+        testDB = null;
+    }
 
     @Test
     void test_one(){
@@ -14,6 +26,7 @@ class QuestionBankTest {
 
     @Test
     void test_two(){
+        testDB.addBank(new QuestionBank("set1"));
         assertEquals("Name has been used before, please use a new name.", QuestionBank.createQuestionBankAction("set1", testDB));
     }
 
