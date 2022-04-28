@@ -1,5 +1,6 @@
 package testformgenerator.project_group_11;
 
+import java.util.Objects;
 import java.util.Vector;
 
 public class DBMgr {
@@ -56,6 +57,19 @@ public class DBMgr {
 
         return temp;
 
+    }
+
+    public boolean checkBankExists(String bankName){
+        boolean temp = false;
+        for(int x=0; x < sets; x++) { //Loop until question bank found or all listings exhausted
+            QuestionBank examineTemp = questionSets.get(x);
+            if(Objects.equals(examineTemp.getName(), bankName)) {
+                return true; //If the current ban's name matches, assign it to temp and end the loop.
+
+            }
+        }
+
+        return false;
     }
 
     public boolean addTest(Test toAdd) {
