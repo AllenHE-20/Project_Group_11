@@ -110,7 +110,7 @@ public class CreateQuestionController {
             Question questHold = new Question(questField.getText(), answers[0], answers[1], answers[2], answers[3]);
             temp.addNewQuestion(questHold);
 
-            database.setPersistentMessage(result);
+            database.setPersistentMessage("Created question: " + questField.getText() + " in bank: " + availableBanks.getValue() + " successfully.");
             changeSceneHandler("confirmationScreen.fxml");
         }else{
             //Set invalidQuestionLabel message to result

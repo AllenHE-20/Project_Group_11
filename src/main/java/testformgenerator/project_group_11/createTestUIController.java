@@ -98,7 +98,7 @@ public class createTestUIController {
         Boolean temp = creationController.createNewTest(availableBanks.getValue(), testName.getText(), testCount.getValue(), questionCount.getValue(), database);
 
         if(temp){
-            database.setPersistentMessage("Test created successfully.");
+            database.setPersistentMessage("Test " + testName.getText() + " created successfully.");
             changeSceneHandler("confirmationScreen.fxml");
         }else{
             errorLabel.setText("An invalid input was detected. Please check all inputs.");
