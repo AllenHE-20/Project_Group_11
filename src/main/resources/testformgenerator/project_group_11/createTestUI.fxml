@@ -5,7 +5,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testformgenerator.project_group_11.createTestUIController">
     <children>
-        <Label layoutX="247.0" layoutY="53.0" text="Create Test" />
+        <Label layoutX="260.0" layoutY="78.0" text="Create Test" />
         <ComboBox fx:id="availableBanks" layoutX="220.0" layoutY="142.0" onAction="#setQuestionCount" />
         <Label fx:id="bankDetails" layoutX="220.0" layoutY="170.0" />
 
@@ -21,5 +21,6 @@
 
         <Button fx:id="homeButton" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" onAction="#triggerSceneChange" text="Home" />
       <TextField fx:id="testName" layoutX="216.0" layoutY="103.0" promptText="Test Name" />
+      <Label fx:id="errorLabel" layoutX="264.0" layoutY="363.0" textFill="#fc0000" />
     </children>
 </AnchorPane>

@@ -27,6 +27,9 @@ public class createTestUIController {
     private Label bankDetails;
 
     @FXML
+    private Label errorLabel;
+
+    @FXML
     private Spinner<Integer> questionCount;
 
     @FXML
@@ -41,6 +44,7 @@ public class createTestUIController {
 
     @FXML
     public void initialize(){
+        //TODO: Update the form count spinner to have a minimum of two
         DBMgrHolder holder = DBMgrHolder.getInstance();
         DBMgr database = holder.getDatabase();
 
@@ -88,13 +92,18 @@ public class createTestUIController {
 
         TestCreationController creationController = new TestCreationController();
         Boolean randomize = randomizeOrder.isSelected();
-        QuestionBank bank = database.getQuestionBank(availableBanks.getValue());
+        QuestionBank bank = database.getQuestionBank(availableBanks.getValue()); //TODO: Is this needed?
         System.out.println((availableBanks.getValue()));
 
         Boolean temp = creationController.createNewTest(availableBanks.getValue(), testName.getText(), testCount.getValue(), questionCount.getValue(), database);
 
+        if(temp){
+            database.setPersistentMessage("Test created successfully.");
+            changeSceneHandler("confirmationScreen.fxml");
+        }else{
+            errorLabel.setText("An invalid input was detected. Please check all inputs.");
+        }
 
-        System.out.println(temp);
     }
 
 
@@ -115,7 +124,7 @@ public class createTestUIController {
             stage.setScene(scene);
             stage.show();
         }catch(IOException e){
-            System.err.println("An error " + e.getMessage() + " occurred when switching to the create question scene.");
+            System.err.println("An error " + e.getMessage() + " occurred when switching to the " + target + " scene.");
         }
     }
 
