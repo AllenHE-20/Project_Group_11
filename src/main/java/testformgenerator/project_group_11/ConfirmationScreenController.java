@@ -24,6 +24,7 @@ public class ConfirmationScreenController {
         DBMgr database = holder.getDatabase();
 
         messageLabel.setText(database.getPersistentMessage());
+        database.setPersistentMessage("Error: This screen should be unreachable."); //Updates persistent message to show an error if this screen is reached again improperly
     }
 
     public void goToMenu(){
