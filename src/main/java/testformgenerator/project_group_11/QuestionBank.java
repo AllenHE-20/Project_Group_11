@@ -44,13 +44,34 @@ public class QuestionBank {
         return true;
     }
 
-    public static String createQuestionBankAction(String name, DBMgr targetDatabase) { //Maybe this should also receive the DBMgr so that it can add the bank to it.
+    public static String createQuestionBankAction(String name, DBMgr targetDatabase) {
+        String returnMessage = "";
+        boolean nameLength = nameCorrectLength(name);
+        boolean alreadyExists = targetDatabase.checkBankExists(name);
 
-        if (!nameCorrectLength(name)) {
-            return "Invalid Name"; //This multiple return style is bad practice
+        if(nameLength && !alreadyExists){ //If name length is valid and does not exist, create.
+            //
+            targetDatabase.addBank(new QuestionBank(name));
+            returnMessage = "Created Question Bank Successfully";
+        }else if(!nameLength){ //Catch name length errors first
+            returnMessage = "Name does not fit the character limit, please try again.";
+        }else if(alreadyExists){ //Catch errors for preexisting banks second
+            returnMessage = "Name has been used before, please use a new name.";
         }
 
-        targetDatabase.addBank(new QuestionBank(name));
-        return "Created Question Bank Successfully";
+        /*
+        if (!nameCorrectLength(name)) {
+            returnMessage = "Name does not fit the character limit, please try again."; //This multiple return style is bad practice
+        }
+        if(testVal != null){
+            returnMessage = "Name has been used before, please use a new name.";
+        }else{
+            targetDatabase.addBank(new QuestionBank(name));
+            returnMessage = "Created Question Bank Successfully";
+        }
+        */
+
+
+        return returnMessage;
     }
 }
