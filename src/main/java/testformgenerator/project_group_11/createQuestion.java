@@ -7,7 +7,7 @@ public class createQuestion {
     public static final int ANSWERCHOICE_MAX_AMOUNT = 10;
     public static final int ANSWERCHOICE_MIN_AMOUNT = 1;
 
-    //Check Question String
+    //Check Question String length
     public static boolean correctQuestionInputLength(String question) {
 
         if (question.length() > INPUT_MIN_LENGTH && question.length() < INPUT_MAX_LENGTH) {
@@ -19,7 +19,7 @@ public class createQuestion {
 
     }
 
-    //Check Answer Choice String Array
+    //Check Answer Choice String Array for lengths
     public static boolean correctAnswerInputLengths(String[] answerChoices) {
 
         for (int i = 0; i < answerChoices.length; i++) {
@@ -30,6 +30,7 @@ public class createQuestion {
         return true;
     }
 
+    //Check if there is the correct number of answer choices
     public static boolean correctAnswerChoiceAmount(String[] answerChoices) {
 
         if (answerChoices.length > ANSWERCHOICE_MIN_AMOUNT && answerChoices.length < ANSWERCHOICE_MAX_AMOUNT) {
@@ -52,19 +53,20 @@ public class createQuestion {
 
     public static String createQuestionAction(String question, String[] answerChoices, int correctAnswer) {
 
-        if (!correctQuestionInputLength(question)) {
-            return "Invalid Question Input";
+        //TODO: FIX THIS. Using an elif here is very bad, if an early condition is correct later ones are missed
+        if (!correctQuestionInputLength(question)) { //Validate question length
+            return "Invalid Question Input"; //Return error
         }
-        else if (!correctAnswerInputLengths(answerChoices)) {
-            return "Invalid Answer Choice Input";
+        else if (!correctAnswerInputLengths(answerChoices)) { //Validate answer lengths
+            return "Invalid Answer Choice Input"; //Return error
         }
-        else if (!correctAnswerChoiceAmount(answerChoices)) {
-            return "Invalid Answer Choice Amount";
+        else if (!correctAnswerChoiceAmount(answerChoices)) { //Validate number of answers
+            return "Invalid Answer Choice Amount"; //Return error
         }
-        else if (!correctAnswerSelected(answerChoices, correctAnswer)) {
+        else if (!correctAnswerSelected(answerChoices, correctAnswer)) { //Validate correct answer selection
             return "Invalid Correct Answer Selection";
         }
 
-        return "Created Question Sucessfully";
+        return "Created Question Sucessfully"; //Return if all inputs are valid
     }
 }

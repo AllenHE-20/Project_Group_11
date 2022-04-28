@@ -7,6 +7,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/*
+ * Extraneous class for launching question creation scene directly during testing
+ * TODO: Delete createQuestionDemo.java
+ */
 public class createQuestionDemo extends Application {
     @Override
     public void start(Stage stage) throws IOException {

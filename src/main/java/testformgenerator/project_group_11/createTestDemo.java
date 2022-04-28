@@ -7,6 +7,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/*
+ * Extraneous class for directly launching create test UI during development
+ * TODO: Delete createTestDemo.java
+ */
+
 public class createTestDemo extends Application {
     @Override
     public void start(Stage stage) throws IOException {

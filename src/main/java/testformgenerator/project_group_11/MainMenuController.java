@@ -10,8 +10,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+/*
+ * This class handles button selections and scene transitions from the main menu
+ */
 public class MainMenuController {
 
+    //Establish variables corresponding to UI elements
     @FXML
     private Button createBank;
 
@@ -22,45 +27,27 @@ public class MainMenuController {
     private Button createTest;
 
     public void changeScene(ActionEvent actionEvent){
-        //Code to determine button pressed goes here
-
-        if(actionEvent.getSource() == createBank){
+        if(actionEvent.getSource() == createBank){ //Transition to question bank scene if selected
             changeSceneHandler("QuestionBank.fxml");
-        }else if(actionEvent.getSource() == createQuestion){
+        }else if(actionEvent.getSource() == createQuestion){ //Transition to question creation scene if selected
             changeSceneHandler("createQuestion.fxml");
-        }else if(actionEvent.getSource() == createTest){
+        }else if(actionEvent.getSource() == createTest){ //Transition to test creation scene if selected
             changeSceneHandler("createTestUI.fxml");
         }
     }
 
     private void changeSceneHandler(String target){
-        Stage stage;
-        Parent root;
+        Stage stage; //Establish stage object
+        Parent root; //Establish parent object
         try {
-            stage = (Stage) createBank.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource(target));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            stage = (Stage) createBank.getScene().getWindow(); //Get the stage this was triggered from using the create bank button
+            root = FXMLLoader.load(getClass().getResource(target)); //Load desired scene into root object
+            Scene scene = new Scene(root); //Create new scene using root
+            stage.setScene(scene); //Set current stage to new scene
+            stage.show(); //Render new scene
         }catch(IOException e){
-            System.err.println("An error " + e.getMessage() + " occurred when switching to the create question scene.");
+            System.err.println("An error " + e.getMessage() + " occurred when switching to the" + target + "scene.");
         }
     }
 
-    public void changeToBank(ActionEvent actionEvent) throws IOException {createBankSceneChange();}
-
-    private void createBankSceneChange() throws IOException {
-        //
-        Stage stage;
-        Parent root;
-        try {
-            stage = (Stage) createBank.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("QuestionBank.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }catch(IOException e){
-            System.err.println("An error " + e.getMessage() + " occurred when switching to the create question scene.");
-        }
-    }
 }

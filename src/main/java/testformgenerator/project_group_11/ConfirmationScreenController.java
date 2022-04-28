@@ -12,6 +12,7 @@ import java.io.IOException;
 
 public class ConfirmationScreenController {
 
+    //Establish variables corresponding to onscreen items
     @FXML
     private Button okButton;
 
@@ -19,25 +20,27 @@ public class ConfirmationScreenController {
     private Label messageLabel;
 
     @FXML
-    public void initialize(){
-        DBMgrHolder holder = DBMgrHolder.getInstance();
-        DBMgr database = holder.getDatabase();
+    public void initialize(){ //Set up scene
+        DBMgrHolder holder = DBMgrHolder.getInstance(); //Retrieve DBMgrHolder singleton
+        DBMgr database = holder.getDatabase(); //Retrieve database
 
-        messageLabel.setText(database.getPersistentMessage());
+        messageLabel.setText(database.getPersistentMessage()); //Set message from value stored in database
         database.setPersistentMessage("Error: This screen should be unreachable."); //Updates persistent message to show an error if this screen is reached again improperly
     }
 
+
+
     public void goToMenu(){
-        Stage stage;
-        Parent root;
+        Stage stage; //Establish stage object
+        Parent root; //Establish parent object
         try {
-            stage = (Stage) okButton.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            stage = (Stage) okButton.getScene().getWindow(); //Get the stage this was triggered from using the home button
+            root = FXMLLoader.load(getClass().getResource("mainMenu.fxml")); //Load main menu scene into root object
+            Scene scene = new Scene(root); //Create new scene using root
+            stage.setScene(scene); //Set current stage to new scene
+            stage.show(); //Render new scene
         }catch(IOException e){
-            System.err.println("An error " + e.getMessage() + " occurred when switching to the create question scene.");
+            System.err.println("An error " + e.getMessage() + " occurred when switching to the main menu scene.");
         }
     }
 }

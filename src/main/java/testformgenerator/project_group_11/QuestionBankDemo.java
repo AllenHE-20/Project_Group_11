@@ -7,6 +7,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+/*
+ * Note: This class exists to provide a launch directly into the QuestionBank scene during testing
+ * Can be considered deprecated due to creation of database persistence & main menu
+ * TODO: Remove this file(QuestionBankDemo.java)
+ */
 public class QuestionBankDemo extends Application{
     @Override
     public void start(Stage stage) throws IOException {

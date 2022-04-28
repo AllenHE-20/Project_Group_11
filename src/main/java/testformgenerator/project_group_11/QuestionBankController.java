@@ -15,13 +15,12 @@ import java.io.IOException;
 
 public class QuestionBankController {
 
+    //These variables establish where the elements in the UI are mapped to to enable interaction
     @FXML
     private Button homeButton;
 
     @FXML
     private Button submitButton;
-
-
 
     @FXML
     private TextField bankName;
@@ -31,43 +30,42 @@ public class QuestionBankController {
 
     public void tryCreateQuestionBank(ActionEvent actionEvent){
         submitQuestionBank();
-    }
+    } //Triggered when a question bank is submitted
 
     private void submitQuestionBank(){ //Check if this needs to throw an exception
-        String answer = bankName.getText();
-        DBMgrHolder holder = DBMgrHolder.getInstance();
-        DBMgr database = holder.getDatabase();
+        String answer = bankName.getText(); //Retrieve name input from field
+        DBMgrHolder holder = DBMgrHolder.getInstance(); //Retrieve DBHolder singleton instance
+        DBMgr database = holder.getDatabase(); //Retrieve database
 
-        String result = QuestionBank.createQuestionBankAction(answer, database);
+        String result = QuestionBank.createQuestionBankAction(answer, database); //Attempt to create question bank
 
-        if (result.equals("Created Question Bank Successfully")){
-            //Change scene to splash page
-            database.setPersistentMessage("Created question bank " + answer + " successfully.");
-            changeSceneHandler("confirmationScreen.fxml");
+        if (result.equals("Created Question Bank Successfully")){ //Check if creation succeeded
+            database.setPersistentMessage("Created question bank " + answer + " successfully."); //Set message for confirmation screen
+            changeSceneHandler("confirmationScreen.fxml"); //Transition to confirmation screen
         }else{
             //Set invalidQuestionBankLabel message to result
-            invalidQuestionBankLabel.setText(result);
+            invalidQuestionBankLabel.setText(result); //Set error message to tell user what's wrong
         }
     }
 
     public void triggerSceneChange(ActionEvent actionEvent){
-        if(actionEvent.getSource() == homeButton){
+        if(actionEvent.getSource() == homeButton){ //When user selects home button, send them to main menu
             changeSceneHandler("mainMenu.fxml");
         }
     }
 
 
     private void changeSceneHandler(String target){
-        Stage stage;
-        Parent root;
+        Stage stage; //Establish stage object
+        Parent root; //Establish parent object
         try {
-            stage = (Stage) homeButton.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource(target));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            stage = (Stage) homeButton.getScene().getWindow(); //Get the stage this was triggered from using the home button
+            root = FXMLLoader.load(getClass().getResource(target)); //Load desired scene into root object
+            Scene scene = new Scene(root); //Create new scene using root
+            stage.setScene(scene); //Set current stage to new scene
+            stage.show(); //Render new scene
         }catch(IOException e){
-            System.err.println("An error " + e.getMessage() + " occurred when switching to the create question scene.");
+            System.err.println("An error " + e.getMessage() + " occurred when switching to the" + target + "scene.");
         }
     }
 

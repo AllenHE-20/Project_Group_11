@@ -26,7 +26,7 @@ public class QuestionBank {
         if(status) { //Only increment count if addition was successful.
             questionCount++;
         }
-        return status;
+        return status; //Return success value
     }
 
     public String getName() { //Return name for search purposes.
@@ -39,9 +39,9 @@ public class QuestionBank {
 
     //check if name length is valid
     public static boolean nameCorrectLength(String name){
-        if (name.length() < INPUT_MIN_LENGTH || name.length() > INPUT_MAX_LENGTH)
-            return false;
-        return true;
+        if(name.length() < INPUT_MIN_LENGTH || name.length() > INPUT_MAX_LENGTH) //Validate input length
+            return false; //Return false if invalidating condition met
+        return true; //Assumed true by default
     }
 
     public static String createQuestionBankAction(String name, DBMgr targetDatabase) {
@@ -58,19 +58,6 @@ public class QuestionBank {
         }else if(alreadyExists){ //Catch errors for preexisting banks second
             returnMessage = "Name has been used before, please use a new name.";
         }
-
-        /*
-        if (!nameCorrectLength(name)) {
-            returnMessage = "Name does not fit the character limit, please try again."; //This multiple return style is bad practice
-        }
-        if(testVal != null){
-            returnMessage = "Name has been used before, please use a new name.";
-        }else{
-            targetDatabase.addBank(new QuestionBank(name));
-            returnMessage = "Created Question Bank Successfully";
-        }
-        */
-
 
         return returnMessage;
     }
