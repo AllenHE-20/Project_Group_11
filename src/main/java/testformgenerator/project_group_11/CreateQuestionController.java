@@ -112,7 +112,6 @@ public class CreateQuestionController {
 
             database.setPersistentMessage(result);
             changeSceneHandler("confirmationScreen.fxml");
-            invalidQuestionLabel.setText(result); //TODO: In final version, this section will retrieve DBMgr singleton, get the question bank, and add the question
         }else{
             //Set invalidQuestionLabel message to result
             invalidQuestionLabel.setText(result);
