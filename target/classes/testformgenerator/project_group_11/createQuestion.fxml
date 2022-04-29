@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testformgenerator.project_group_11.CreateQuestionController">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="invalidQuestionLabel" layoutX="286.0" layoutY="64.0" textAlignment="CENTER" />
+            <TextField fx:id="questField" layoutX="226.0" layoutY="101.0" promptText="Question" />
+            <TextField fx:id="ansAField" layoutX="226.0" layoutY="134.0" promptText="Answer A" />
+            <TextField fx:id="ansBField" layoutX="226.0" layoutY="165.0" promptText="Answer B" />
+            <TextField fx:id="ansCField" layoutX="226.0" layoutY="200.0" promptText="Answer C" />
+            <TextField fx:id="ansDField" layoutX="226.0" layoutY="235.0" promptText="Answer D" />
+            <Button fx:id="submitButton" layoutX="249.0" layoutY="326.0" mnemonicParsing="false" onAction="#tryCreateQuestion" text="Create Question" />
+            <Label fx:id="bankStatus" layoutX="287.0" layoutY="41.0" />
+            <Button fx:id="homeButton" layoutY="2.0" mnemonicParsing="false" text="Home" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

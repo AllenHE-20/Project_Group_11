@@ -9,7 +9,7 @@ public class Form {
 
     public Form(int questionQuantity) { //Set up vector and storage capacity info
         questionCount = questionQuantity;
-        questionStore = new Vector<Question>(questionCount);
+        questionStore = new Vector<>(questionCount);
     }
 
     public boolean addQuestion(Question newQ) {
@@ -21,5 +21,15 @@ public class Form {
             questionCount++;
         }
         return added;
+    }
+
+    //iterator to get questions
+    public String getQuestions(Vector<Question> questionStore){
+        this.questionStore = questionStore;
+        String output = "";
+        for (Question q : questionStore){
+            output = q.getQuestion() + "\n";
+        }
+        return output;
     }
 }

@@ -4,6 +4,7 @@ module testformgenerator.project_group_11 {
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
+    requires itextpdf;
 
     opens testformgenerator.project_group_11 to javafx.fxml;
     exports testformgenerator.project_group_11;

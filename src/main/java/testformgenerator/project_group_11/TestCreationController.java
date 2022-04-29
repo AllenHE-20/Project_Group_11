@@ -1,4 +1,9 @@
 package testformgenerator.project_group_11;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfWriter;
 
 public class TestCreationController {
     private QuestionBank currentBank=null;
@@ -6,6 +11,29 @@ public class TestCreationController {
 
     public TestCreationController() {
         //Empty constructor
+    }
+
+    public boolean createPDF(String pdfName, String bankName, DBMgr database){
+        boolean pdfCreated = false;
+        currentBank = database.getQuestionBank(bankName); //get question bank
+        Document document = new Document();
+        try {
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(pdfName + ".pdf"));
+            List orderedList = new List(List.ORDERED);
+            for (int i = 0; i < currentBank.getQuestionCount(); i++){ //loop through question bank
+                orderedList.add((Element) currentBank.getNext());
+                orderedList.add("\n");
+                document.add(orderedList);
+
+            }
+            document.close();
+            writer.close();
+            pdfCreated = true;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return pdfCreated;
     }
 
     public boolean createNewTest(String bankName, String testName, int formCount, int questionCount, DBMgr database) {
