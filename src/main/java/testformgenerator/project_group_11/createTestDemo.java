@@ -7,18 +7,17 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-
 /*
- * Note: This class exists to provide a launch directly into the QuestionBank scene during testing
- * Can be considered deprecated due to creation of database persistence & main menu
- * TODO: Remove this file(QuestionBankDemo.java)
+ * Extraneous class for directly launching create test UI during development
+ * TODO: Delete createTestDemo.java
  */
-public class QuestionBankDemo extends Application{
+
+public class createTestDemo extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(createQuestionDemo.class.getResource("QuestionBank.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(createQuestionDemo.class.getResource("createTestUI.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 590, 400);
-        stage.setTitle("Hello!");
+        stage.setTitle("Create Test");
         stage.setScene(scene);
         stage.show();
     }

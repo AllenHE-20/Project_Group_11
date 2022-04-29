@@ -4,8 +4,8 @@ import java.util.Vector;
 
 public class Form {
     private Vector<Question> questionStore; //Store questions and state information
-    private int questionMax=0;
-    private int questionCount=0;
+    private int questionMax=0; //Store max form size in terms of questions
+    private int questionCount=0; //Store current number of stored question
 
     public Form(int questionQuantity) { //Set up vector and storage capacity info
         questionCount = questionQuantity;
@@ -15,9 +15,9 @@ public class Form {
     public boolean addQuestion(Question newQ) {
         boolean added=false;
         if(questionCount < questionMax) { //Only add to vector if there is space.
-            added = questionStore.add(newQ);
+            added = questionStore.add(newQ); //Set added status based on storage operation result
         }
-        if(added) { //Only increment count if add was actuall successful.
+        if(added) { //Only increment count if add was actually successful.
             questionCount++;
         }
         return added;
