@@ -20,7 +20,7 @@ public class MainMenuLauncher extends Application {
 
         QuestionBank qb = new QuestionBank("Bank 1");
         Question q = new Question("What is today's date?", "July 24th, 2022", "August 16th, 2022", "January 24th, 2022", "April 21st, 2022");
-        Question q1 = new Question("What is today's date?", "July 24th, 2022", "August 16th, 2022", "January 24th, 2022", "April 21st, 2022");
+        Question q1 = new Question("What is yesterday's date?", "July 24th, 2022", "August 16th, 2022", "January 24th, 2022", "April 21st, 2022");
         qb.addNewQuestion(q);
         qb.addNewQuestion(q1);
         data.addBank(qb);
