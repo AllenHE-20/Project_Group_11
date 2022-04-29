@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfDocument;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public class TestCreationController {
@@ -13,19 +14,23 @@ public class TestCreationController {
         //Empty constructor
     }
 
-    public boolean createPDF(String pdfName, String bankName, DBMgr database){
+    public boolean createPDF(String pdfName, String bankName, DBMgr database, int startingQuestion, int totalQuestions){
         boolean pdfCreated = false;
         currentBank = database.getQuestionBank(bankName); //get question bank
         Document document = new Document();
+
+        for(int x = 0; x < startingQuestion ; x++) //Advance through bank to get to desired starting question
+            currentBank.getNext();
+
         try {
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(pdfName + ".pdf"));
-            List orderedList = new List(List.ORDERED);
-            for (int i = 0; i < currentBank.getQuestionCount(); i++){ //loop through question bank
-                orderedList.add((Element) currentBank.getNext());
-                orderedList.add("\n");
-                document.add(orderedList);
+            document.open();
+
+            for (int i = 0; i < totalQuestions; i++){ //loop through question bank
+                document.add(new Paragraph(currentBank.getNext().getQuestion() + "\n"));
 
             }
+
             document.close();
             writer.close();
             pdfCreated = true;
@@ -61,11 +66,13 @@ public class TestCreationController {
             currentTest = new Test(testName, formCount); //Create test object
             for(int x=0; x < formCount; x++) { //Create all n forms
                 Form currentForm = new Form(questionCount); //Create form objects
+                createPDF(testName + String.valueOf(x + 1), bankName, database, questionCount * x, questionCount);
                 for(int y = 0; y < questionCount; y++) { //Add n questions to each form
                     currentForm.addQuestion(currentBank.getNext()); //Add next question to current form
                 }
                 currentTest.addForm(currentForm); //Add the form to the test object
             }
+            //createPDF(testName, bankName, database,0);
             testCreated = database.addTest(currentTest); //If the test can be added to the database it was successfully created.
         }
 
